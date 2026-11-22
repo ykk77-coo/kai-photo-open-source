@@ -1,0 +1,17 @@
+.continue-reading{max-width:1100px;margin:8px auto 20px;padding:18px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:center}
+.continue-link{display:flex;align-items:center;gap:20px;min-width:0;min-height:68px;border-radius:12px}
+.continue-link>img{width:64px;height:64px;flex-shrink:0;object-fit:cover;border-radius:8px}
+.continue-copy{min-width:0;display:grid;gap:6px}
+.continue-heading{font-family:Georgia,"Songti SC",SimSun,serif;font-size:24px;line-height:1.35}
+.continue-heading small{font-family:Hanken,sans-serif;font-size:14px;margin-left:12px;color:#cecac0}
+.continue-meta{font-size:16px;line-height:1.5;display:flex;gap:12px;color:#cecac0}
+#continue-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.continue-link>svg{width:22px;height:22px;margin-left:auto;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.2;transition:transform .22s ease}
+.continue-link:hover>svg{transform:translateX(4px)}
+#continue-clear{font-size:16px;min-height:44px;padding:10px 14px;border-radius:24px;color:#cecac0}
+#continue-clear:hover{background:#efede712;color:var(--paper)}
+#continue-status:empty{display:none}
+#continue-status{grid-column:1/-1;font-size:16px;line-height:1.5}
+@media(max-width:760px){.continue-reading{gap:8px 10px;padding:14px 0;margin-bottom:12px}.continue-link{gap:12px}.continue-link>img{width:52px;height:56px}.continue-heading{font-size:23px}.continue-heading small{font-size:13px;margin-left:8px}.continue-meta{gap:8px;font-size:16px}.continue-link>svg{display:none}#continue-clear{padding:10px 8px;font-size:16px}.continue-meta #continue-title{display:none}}
+@media(max-width:430px){.continue-heading{display:flex;flex-direction:column;gap:2px}.continue-heading small{margin-left:0}.continue-copy{gap:4px}}
+@media(prefers-reduced-motion:reduce){.continue-link>svg{transition:none}.continue-link:hover>svg{transform:none}}

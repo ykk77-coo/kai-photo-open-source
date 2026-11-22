@@ -1,0 +1,47 @@
+.visitor-mode [hidden]{display:none!important}
+.visitor-mode .site-header{justify-content:space-between}
+.visitor-mode .site-header>.logo{position:static;transform:none;margin:0}
+.visitor-mode .desktop-nav{gap:30px}
+.visitor-mode .desktop-nav>a{font-size:16px;letter-spacing:.02em;min-height:44px;display:inline-flex;align-items:center;color:#efede7bf}
+.visitor-mode .desktop-nav>a:hover,.visitor-mode .desktop-nav>a[aria-current]{color:#fff}
+.visitor-mode .site-header.on-paper .desktop-nav>a{color:#49473f}
+.visitor-mode .site-header.on-paper .desktop-nav>a:hover,.visitor-mode .site-header.on-paper .desktop-nav>a[aria-current]{color:#171611}
+.visitor-mode .site-header.on-paper .desktop-nav>a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.visitor-mode .reference-notice:has(#mode-note){pointer-events:none}
+.visitor-mode .browse-opener{font:16px/1.5 Hanken,"Songti SC",SimSun,serif;border-bottom:1px solid currentColor;padding:9px 0;min-height:44px;justify-self:end;align-self:end;white-space:nowrap}
+.visitor-mode .a-head{flex-wrap:wrap;gap:24px}
+.visitor-mode .menu-dialog{inset:0;width:calc(100% - 64px);max-width:760px;height:max-content;max-height:calc(100svh - 100px);margin:auto;padding:0 32px 28px;border:1px solid #efede72b;border-radius:24px;background:#171611f5;overflow:auto;box-shadow:0 24px 70px #0005}
+.visitor-mode .menu-top{height:82px;padding:0;gap:24px;position:sticky;top:0;z-index:2;background:#171611}
+.visitor-mode .menu-top h2{font:24px/1.4 Georgia,"Songti SC",SimSun,serif;margin:0}
+.visitor-mode .menu-top button{font-size:16px;letter-spacing:0;min-height:44px}
+.visitor-mode .menu-dialog #menu-rows{margin:0}
+.visitor-mode .browse-links{display:flex;flex-direction:column}
+.visitor-mode .browse-links a{display:flex;align-items:baseline;gap:16px;min-height:68px;padding:18px 14px 18px 84px;border-top:1px solid #efede71a;font:24px/1.4 Georgia,"Songti SC",SimSun,serif}
+.visitor-mode .browse-links small{font:14px/1.5 Hanken,sans-serif;color:#cecac0}
+.visitor-mode .browse-links a:hover{background:#efede70a}
+.visitor-mode .continue-reading{margin-top:0}
+.visitor-mode .home-index{gap:32px}
+.visitor-mode .province[role=link]{cursor:pointer}
+.visitor-mode .province:focus-visible{outline:none;stroke:#fff;stroke-width:3;filter:drop-shadow(0 0 3px #000)}
+@media(max-width:760px){
+ .visitor-mode .site-header{justify-content:center}
+ .visitor-mode .desktop-nav{display:none}
+ .visitor-mode .mobile-nav{width:min(360px,calc(100% - 32px));left:50%;right:auto;transform:translateX(-50%);padding:6px 10px;gap:4px}
+ .visitor-mode .mobile-nav a{flex:1;font-size:16px;line-height:1.5;min-height:44px;padding:8px 14px;white-space:nowrap}
+ .visitor-mode .a-head{gap:18px}
+ .visitor-mode .browse-opener{margin-left:auto}
+ .visitor-mode .menu-dialog{width:calc(100% - 24px);max-height:calc(100svh - 110px);max-width:600px;inset:auto 0 82px;padding:0 20px 18px;margin:0 auto;border-radius:22px}
+ .visitor-mode .menu-top{height:66px}
+ .visitor-mode .menu-top h2{font-size:22px}
+ .visitor-mode .browse-links a{padding:16px 8px 16px 64px;font-size:23px;gap:12px;flex-wrap:wrap}
+ .visitor-mode .browse-links small{font-size:13px}
+ .visitor-mode .home-index{gap:30px}
+}
+@media(prefers-reduced-motion:reduce){.visitor-mode .menu-dialog{animation:none!important}.visitor-mode .province:focus-visible{filter:none}}
+
+.visitor-mode.home-dynamic .site-header>.logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.home-dynamic .desktop-nav{margin-left:auto}
+.home-dynamic .desktop-nav .nav-trigger{font-size:16px;letter-spacing:.02em}
+.home-dynamic .chapter-card strong{font-size:18px}
+.home-dynamic .chapter-card small{font-size:14px;line-height:1.6}
+@media(max-width:700px){.visitor-mode .a-place-options{max-height:min(180px,24svh)}}

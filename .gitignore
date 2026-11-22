@@ -1,0 +1,14 @@
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+private/
+originals/
+dist/
+dist-*/
+review/
+*.zip
+.DS_Store
+Thumbs.db

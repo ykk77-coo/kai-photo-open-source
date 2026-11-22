@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 580" role="img" aria-labelledby="title desc">
+  <title id="title">一组作品，两种首页构图</title>
+  <desc id="desc">Lumen 原创示例重画。电脑横幅把文字与山景放在两侧，手机竖幅把标题与主体上下错开，导航放在底部。</desc>
+  <defs>
+    <linearGradient id="wide" x2="0" y2="1"><stop stop-color="#6d817d"/><stop offset="1" stop-color="#172c35"/></linearGradient>
+    <linearGradient id="tall" x2="0" y2="1"><stop stop-color="#a17c64"/><stop offset="1" stop-color="#302827"/></linearGradient>
+    <linearGradient id="shade"><stop stop-color="#111c20" stop-opacity=".84"/><stop offset=".78" stop-color="#111c20" stop-opacity="0"/></linearGradient>
+    <clipPath id="desk"><rect x="51" y="152" width="686" height="331" rx="15"/></clipPath>
+    <clipPath id="phone"><rect x="800" y="152" width="269" height="331" rx="15"/></clipPath>
+    <style>
+      text {font-family: system-ui,"Microsoft YaHei","PingFang SC",sans-serif}
+      .label {font-size:26px;font-weight:650;fill:#282823}
+      .note {font-size:21px;fill:#514b42}
+      .ui {fill:#fff8e9}
+    </style>
+  </defs>
+  <rect width="1120" height="580" rx="22" fill="#f5efe4"/>
+  <text x="50" y="63" fill="#2b2924" font-size="35" font-weight="660">一组作品，两种首页构图</text>
+  <text class="note" x="51" y="100">Lumen 示例画面 · 标注标题、主体和导航的位置</text>
+  <text class="label" x="51" y="137">桌面横幅</text>
+  <text class="label" x="800" y="137">手机竖幅</text>
+  <g clip-path="url(#desk)">
+    <rect x="51" y="152" width="686" height="331" fill="url(#wide)"/>
+    <circle cx="572" cy="264" r="64" fill="#dfcaa4" opacity=".73"/>
+    <path d="M51 405 230 319 386 408 551 310 737 379V483H51Z" fill="#182b31"/>
+    <path d="M51 461Q399 404 737 469" stroke="#acb6ac" stroke-width="2" opacity=".52" fill="none"/>
+    <rect x="51" y="152" width="686" height="331" fill="url(#shade)"/>
+    <rect x="76" y="173" width="635" height="44" rx="13" fill="#1d2323" opacity=".78"/>
+    <text class="ui" x="94" y="202" font-size="22" letter-spacing="3">LUMEN</text>
+    <text class="ui" x="605" y="201" font-size="17">作品　关于</text>
+    <text class="ui" x="101" y="318" font-size="49" font-weight="640">山野</text>
+    <text class="ui" x="103" y="348" font-size="17" letter-spacing="3">LANDSCAPES</text>
+    <text class="ui" x="103" y="388" font-size="21">看自然作品 →</text>
+    <path d="M501 362H551L571 326" fill="none" stroke="#fff3d9" stroke-width="1.5"/>
+    <text class="ui" x="449" y="369" font-size="19">主体</text>
+  </g>
+  <g clip-path="url(#phone)">
+    <rect x="800" y="152" width="269" height="331" fill="url(#tall)"/>
+    <circle cx="979" cy="307" r="49" fill="#dfcaa4" opacity=".75"/>
+    <path d="M800 388 868 335 935 389 994 343 1069 380V483H800Z" fill="#2b2a28"/>
+    <path d="M800 428Q930 382 1069 431" stroke="#cbb4a2" stroke-width="2" opacity=".52" fill="none"/>
+    <text class="ui" x="822" y="197" font-size="17" letter-spacing="3">LUMEN</text>
+    <text class="ui" x="822" y="245" font-size="38" font-weight="640">山野</text>
+    <text class="ui" x="824" y="275" font-size="16">看自然作品 →</text>
+    <path d="M892 320H923L944 304" fill="none" stroke="#fff3d9" stroke-width="1.5"/>
+    <text class="ui" x="847" y="326" font-size="18">主体</text>
+    <rect x="812" y="426" width="245" height="43" rx="11" fill="#212322"/>
+    <text class="ui" x="831" y="454" font-size="17">首页　作品　地图　关于</text>
+  </g>
+  <text class="note" x="51" y="530">横向留白给标题和题材入口，导航在上方。</text>
+  <text class="note" x="800" y="522">竖图单独选焦点。</text>
+  <text class="note" x="800" y="551">常用导航靠近拇指。</text>
+</svg>

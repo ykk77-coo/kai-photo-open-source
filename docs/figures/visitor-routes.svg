@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 350" role="img" aria-labelledby="title desc">
+  <title id="title">两条路线通往同一张照片</title>
+  <desc id="desc">首页题材进入作品筛选，地区索引进入旅行相册，两条路线都以稳定 ID 进入看图器。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="m1 1 8 4-8 4" fill="none" stroke="#655440" stroke-width="1.2"/></marker>
+    <style>text{font-family:system-ui,"Microsoft YaHei","PingFang SC",sans-serif;fill:#322e28}.node{fill:#fffaf0;stroke:#cbbda5}.edge{fill:none;stroke:#655440;stroke-width:2;marker-end:url(#arrow)}.title{font-size:30px;font-weight:650}.label{font-size:25px;font-weight:600;text-anchor:middle}.sub{font-size:20px;text-anchor:middle;fill:#655440}</style>
+  </defs>
+  <rect width="1080" height="350" rx="22" fill="#f5efe4"/>
+  <text class="title" x="42" y="56">两条路线通往同一张照片</text>
+  <rect class="node" x="44" y="88" width="216" height="73" rx="13"/>
+  <rect class="node" x="44" y="207" width="216" height="73" rx="13"/>
+  <rect class="node" x="389" y="88" width="216" height="73" rx="13"/>
+  <rect class="node" x="389" y="207" width="216" height="73" rx="13"/>
+  <rect x="778" y="132" width="258" height="104" rx="13" fill="#e0e8dd" stroke="#8ba28d"/>
+  <path class="edge" d="M270 125H378M270 244H378M616 124Q703 124 764 171M616 244Q703 244 764 198"/>
+  <text class="label" x="152" y="134">首页题材</text>
+  <text class="label" x="152" y="254">地区索引</text>
+  <text class="label" x="497" y="134">作品筛选</text>
+  <text class="label" x="497" y="254">旅行相册</text>
+  <text class="label" x="907" y="177">统一看图器</text>
+  <text class="sub" x="907" y="211">稳定照片 ID</text>
+  <text x="44" y="322" font-size="21" fill="#655440">照片目录同时提供题材、地点、作者和图片地址。</text>
+</svg>

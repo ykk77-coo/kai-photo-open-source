@@ -1,0 +1,35 @@
+/* A quiet glass rail; the photograph remains the main surface. */
+.home-dynamic .desktop-nav .nav-rail{display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:linear-gradient(145deg,#f4f1e220,#b9c7c50d 58%,#e2dbc316),#202824cc;box-shadow:inset 0 1px 0 #fff4,inset 0 -1px 0 #fff1,0 10px 30px -18px #000a;backdrop-filter:blur(22px) saturate(135%);-webkit-backdrop-filter:blur(22px) saturate(135%)}
+.home-dynamic .nav-rail .nav-triggers{gap:3px}
+.home-dynamic .nav-rail .nav-trigger,.home-dynamic .nav-rail #nav-about{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:9px 14px;border-radius:999px;color:#f5f1e6;font:400 17px/1.5 "Songti SC",SimSun,serif;letter-spacing:.06em;transition:background .25s ease,box-shadow .25s ease,transform .2s ease}
+.home-dynamic .nav-rail .nav-trigger:hover,.home-dynamic .nav-rail #nav-about:hover{background:#f7f2e40f;box-shadow:inset 0 1px 0 #fff2}
+.home-dynamic .nav-rail .nav-trigger[aria-expanded=true]{background:linear-gradient(150deg,#f9f4df11,#e2efea0a),#151d1a66;box-shadow:inset 0 1px 0 #fff4,0 5px 14px -10px #000b}
+.home-dynamic .nav-rail .nav-trigger:active,.home-dynamic .nav-rail #nav-about:active{transform:scale(.96)}
+.home-dynamic .nav-rail :focus-visible{outline:2px solid #fff4ce;outline-offset:3px}
+.home-dynamic .morph-dropdown{top:82px;background:linear-gradient(140deg,#f3eddf0d,transparent 55%),#1a211dd9;backdrop-filter:blur(26px) saturate(135%);-webkit-backdrop-filter:blur(26px) saturate(135%)}
+.home-dynamic .nav-panel{max-height:calc(100svh - 106px);scrollbar-width:thin;scrollbar-color:#d5d0be66 transparent}
+.home-dynamic .explore-row strong,.home-dynamic .chapter-card strong{font:400 22px/1.5 "Songti SC",SimSun,serif;letter-spacing:.06em}
+.home-dynamic .explore-row span,.home-dynamic .chapter-card small{font:400 16px/1.65 "Microsoft YaHei",sans-serif;letter-spacing:.02em;color:#e0dfd3}
+.home-dynamic .desktop-nav .places-panel a{font:400 18px/1.5 "Songti SC",SimSun,serif;letter-spacing:.05em;min-height:48px}
+.home-dynamic .places-panel .map-link{font:16px/1.6 "Microsoft YaHei",sans-serif}
+.home-dynamic .index-english{font-size:12px;letter-spacing:.18em}
+.home-dynamic .home-footer,.home-dynamic .cover-controls{font-size:14px}
+.visitor-mode .reference-notice{font-size:12px;line-height:1.6}
+.visitor-mode .a-collection strong,.visitor-mode .a-collection a{font-size:16px}
+.visitor-mode .archive-summary,.visitor-mode .a-results button{font-size:16px}
+.visitor-mode .archive-caption span:last-child{font-size:15px}
+.visitor-mode .archive-caption{row-gap:4px}
+.visitor-mode .lightbox .exif-list dt,.visitor-mode .lightbox #photo-info small{font-size:15px}
+.visitor-mode .lightbox #photo-info{font-size:16px}
+.series-page.visitor-mode .curated-photos figcaption{font:400 17px/1.75 "Songti SC",SimSun,serif;letter-spacing:.03em}
+.visitor-mode .eyebrow{font-size:13px;line-height:1.6}
+.visitor-mode .atlas-hint{font-size:16px;line-height:1.7}
+@media(max-width:760px){
+ .home-dynamic .index-english{font-size:12px;letter-spacing:.16em}
+ .visitor-mode .a-results .archive-summary{font-size:15px}
+ .visitor-mode .archive-caption span:last-child{font-size:15px}
+ .visitor-mode .a-collection strong{font-size:15px}
+ .visitor-mode .lightbox #photo-info{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){.home-dynamic .nav-rail .nav-trigger,.home-dynamic .nav-rail #nav-about{transition:none}.home-dynamic .nav-rail .nav-trigger:active,.home-dynamic .nav-rail #nav-about:active{transform:none}}
+@supports not (backdrop-filter:blur(1px)){.home-dynamic .desktop-nav .nav-rail,.home-dynamic .morph-dropdown{background:#242a25}}

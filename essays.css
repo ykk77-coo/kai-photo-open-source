@@ -1,0 +1,99 @@
+.chapters-page .chapters-head{padding:138px 6% 32px}
+.chapters-page .reference-notice,.essay-page .reference-notice{position:static;bottom:auto;padding:12px 6%;background:var(--black);pointer-events:auto}
+.chapters-head h1{display:flex;align-items:baseline;gap:26px;font-size:clamp(64px,8vw,104px);line-height:1.15}
+.chapters-head h1>span{font:24px/1.4 Georgia,Georgia,serif;color:#c5bfae;letter-spacing:.02em}
+.chapters-switch{display:inline-flex;align-items:center;gap:4px;padding:5px;margin-top:32px;border-radius:30px;background:linear-gradient(145deg,#b9c4a51e,#d3ccb00b);box-shadow:inset 0 1px 0 #e9eddb26;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.chapters-switch a{display:flex;align-items:center;gap:10px;min-height:48px;padding:9px 22px;border-radius:26px;font-size:16px;color:#c1c7b6}
+.chapters-switch a small{font:14px Hanken,sans-serif;color:#bec5af}
+.chapters-switch a[aria-current=page]{background:#a4b19224;color:#f0f1e7;box-shadow:inset 0 1px 0 #eef8dd1c}
+.chapters-switch a:hover{color:#fff;background:#c0cda818}
+.chapters-switch a:active{transform:scale(.97)}
+.chapters-page .chapters-authors{padding:0 6% 24px;display:flex;align-items:center;gap:22px}
+.chapters-page .chapters-authors a{display:inline-flex;align-items:center;min-height:44px;font-size:16px;text-underline-offset:7px}
+.chapters-page .chapters-authors a[aria-current=page]{text-decoration:underline}
+.essay-index{padding:0 6% 80px;max-width:1480px;margin:auto}
+.essay-feature{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:8vw;padding:24px 0 40px;border-top:1px solid #d8dbc527}
+.essay-feature-copy h2{font:400 clamp(48px,5.5vw,80px)/1.3 "Songti SC",SimSun,serif;letter-spacing:.04em}
+.essay-feature-en{font:30px/1.5 Georgia,Georgia,serif;color:#c9c3b2;margin-top:8px}
+.essay-feature-meta{display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.7;color:#c6cbb9;margin-top:30px}
+.essay-feature-meta span{font-size:15px}
+.essay-feature-enter{display:inline-flex;align-items:center;gap:18px;font-size:16px;min-height:48px;margin-top:25px;border-bottom:1px solid #d3ddbe6b}
+.essay-feature-enter svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.3;fill:none;transition:transform .3s}
+.essay-feature:hover .essay-feature-enter svg{transform:translateX(5px)}
+.essay-feature-photo{justify-self:center;width:min(100%,400px)}
+.essay-feature-photo .media{background:transparent;height:auto}
+.essay-feature-photo img{width:100%;height:auto;display:block;object-fit:contain}
+.essay-feature-photo .media:hover img{transform:none}
+.essay-empty{padding:70px 0 110px;min-height:300px;border-top:1px solid #d8dbc527}
+.essay-empty h2{font:400 42px/1.4 "Songti SC",SimSun,serif}
+.essay-empty p{font-size:16px;color:#c2c8b6;margin:20px 0}
+.essay-empty a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:6px}
+.essay-editorial{background:#efede7;color:#24261e;padding-bottom:30px}
+.essay-opening{padding:136px 6vw 64px;max-width:1440px;margin:auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:7vw;min-height:90svh}
+.essay-opening-copy{align-self:center}
+.essay-back{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:16px;color:#525a48;margin-bottom:28px;text-decoration:underline;text-underline-offset:7px}
+.essay-opening h1{font:400 clamp(58px,7.5vw,96px)/1.18 "Songti SC",SimSun,serif;letter-spacing:.035em;text-wrap:balance}
+.essay-english{font:clamp(25px,3vw,42px)/1.4 Georgia,Georgia,serif;color:#646858;margin-top:14px}
+.essay-byline{font-size:16px;line-height:1.7;margin-top:32px}
+.essay-byline span{display:block;margin-top:9px;color:#565e4b}
+.essay-view-note{font-size:15px;line-height:1.8;color:#565e4b;margin-top:28px}
+.essay-photo{min-width:0;margin:0}
+.essay-photo .photo-button{width:100%;display:block;height:auto;padding:0;border:0}
+.essay-photo .media{height:auto;background:transparent}
+.essay-photo img{display:block;width:100%;height:auto;object-fit:contain}
+.essay-photo .media:hover img{transform:none}
+.essay-photo .photo-button:focus-visible{outline:2px solid #59694e;outline-offset:7px}
+.essay-photo figcaption{display:flex;justify-content:space-between;gap:16px;padding-top:14px;font:15px/1.7 Hanken,"Microsoft YaHei",sans-serif;color:#555e4b}
+.essay-photo figcaption>span:last-child{font:17px/1.7 Georgia,Georgia,serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+.essay-opening>.essay-photo{width:100%;max-width:430px;justify-self:end}
+.essay-opening>.essay-photo img{max-height:68svh;width:auto;max-width:100%;margin:auto}
+.essay-pair{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:7vw;padding:52px 6vw 76px;max-width:1440px;margin:auto}
+.essay-pair .portrait{width:100%;max-width:360px;justify-self:center}
+.essay-wide{padding:34px 0 64px}
+.essay-wide figcaption{padding:14px 6vw 0}
+.essay-single{max-width:560px;width:46%;margin:0 auto;padding:32px 0 70px}
+.essay-closing{max-width:1200px;margin:0 auto;padding:34px 6vw 55px}
+.essay-end{display:flex;justify-content:space-between;gap:24px;max-width:1200px;padding:16px 6vw 54px;margin:auto;font-size:16px}
+.essay-end a{display:inline-flex;align-items:center;min-height:48px;text-decoration:underline;text-underline-offset:7px}
+.essay-unavailable{min-height:75svh;padding:160px 7vw 100px}
+.essay-unavailable h1{font-size:clamp(36px,5vw,72px)}
+.essay-unavailable p{font-size:16px;margin:25px 0;color:#c6cbb9}
+.essay-unavailable a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:6px}
+@media(max-width:760px){
+ .chapters-page .chapters-head{padding:104px 7% 20px}
+ .chapters-head h1{display:flex;font-size:54px;gap:15px;flex-wrap:wrap}
+ .chapters-head h1>span{font-size:19px;margin-top:0}
+ .chapters-switch{display:flex;width:max-content;max-width:100%;margin-top:20px;gap:3px}
+ .chapters-switch a{padding:9px 17px;gap:8px}
+ .chapters-switch a small{font-size:12px}
+ .chapters-page .chapters-authors{padding:0 7% 12px}
+ .essay-index{padding:0 7% 70px}
+ .essay-feature{grid-template-columns:1fr;gap:8px;padding-top:24px}
+ .essay-feature-copy{display:contents}
+ .essay-feature-copy h2{font-size:48px}
+ .essay-feature-en{font-size:26px;margin-top:2px}
+ .essay-feature-meta{margin-top:10px;display:block;order:3}
+ .essay-feature-meta span{display:block;margin-top:5px}
+ .essay-feature-enter{margin-top:5px;order:4;justify-self:start}
+ .essay-feature-photo{width:100%;max-width:340px;order:2;margin-top:12px}
+ .essay-empty{padding-top:35px}.essay-empty h2{font-size:34px}
+ .essay-opening{display:flex;flex-direction:column;align-items:stretch;gap:22px;min-height:0;padding:94px 7% 40px}
+ .essay-opening-copy{align-self:stretch}
+ .essay-back{margin-bottom:8px}
+ .essay-opening h1{font-size:54px;line-height:1.2}
+ .essay-english{font-size:27px;margin-top:6px}
+ .essay-byline{display:flex;align-items:baseline;gap:14px;margin-top:14px}.essay-byline span{margin-top:0}
+ .essay-view-note{display:none}
+ .essay-opening>.essay-photo{max-width:320px;align-self:center}
+ .essay-opening>.essay-photo img{max-height:none;width:100%}
+ .essay-pair{display:flex;flex-direction:column;gap:38px;padding:12px 7% 40px}
+ .essay-pair .essay-photo{width:100%;max-width:none}
+ .essay-wide{padding:8px 0 38px}
+ .essay-wide figcaption{padding:12px 7vw 0}
+ .essay-single{width:86%;max-width:none;padding:0 0 40px}
+ .essay-closing{padding:8px 7% 35px}
+ .essay-photo figcaption{font-size:15px;padding-top:12px}
+ .essay-end{padding:10px 7% 44px;gap:18px;flex-wrap:wrap}
+ .essay-editorial{padding-bottom:0}
+}
+@media(prefers-reduced-motion:reduce){.chapters-switch a,.essay-feature-enter svg{transition:none}.chapters-switch a:active,.essay-feature:hover .essay-feature-enter svg{transform:none}}

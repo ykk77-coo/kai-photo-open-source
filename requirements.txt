@@ -1,0 +1,2 @@
+# Only needed for photo import and its integration test. Static hosting needs no Python packages.
+Pillow>=11.3.0,<13

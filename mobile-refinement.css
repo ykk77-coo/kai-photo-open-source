@@ -1,0 +1,95 @@
+/* Approved mobile refinement; existing composition and photographic color stay intact. */
+:root{--kai-serif:Georgia,"Songti SC",SimSun,serif;--kai-motion:cubic-bezier(.22,1,.36,1)}
+h1,h2,.serif,.index-title,.chapter-heading h2,.series-title h1,.series-intro h2,.essay-feature h2,.chapters-head h1,.a-head h1,.atlas-preview-copy h2{font-family:var(--kai-serif);font-weight:400}
+.index-title{font-weight:400!important}
+.media>picture,.backdrop>picture{display:block;width:100%;height:100%}
+.home-footer #cover-view{font-variant-numeric:tabular-nums;text-underline-offset:4px}
+.home-footer #cover-view:hover{text-decoration:underline}
+.mobile-nav a,.visitor-mode .desktop-nav>a{transition:background-color .2s ease,color .2s ease,transform .2s var(--kai-motion);border-radius:999px}
+.mobile-nav a{z-index:1}
+.mobile-nav a[aria-current=page]{background:transparent;color:#fff;box-shadow:none}
+.mobile-nav-lens{position:absolute;left:6px;top:6px;bottom:6px;width:calc((100% - 18px)/4);transform:translateX(calc(var(--nav-index,0) * (100% + 2px)));border-radius:999px;background:#efede721;box-shadow:inset 0 1px 0 #fff2;pointer-events:none;view-transition-name:kai-nav-selection}
+.mobile-nav a:active,.mobile-nav a.nav-pressed,.desktop-nav>a.nav-pressed{transform:scale(.96)}
+.mobile-nav a:focus-visible,.desktop-nav>a:focus-visible,.atlas-touch-tools button:focus-visible,.atlas-region-list a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@view-transition{navigation:auto}
+:root{view-transition-name:none}
+::view-transition{pointer-events:none}
+#main.kai-live-reveal{animation:kai-page-in 220ms ease both}
+::view-transition-group(*){animation-duration:220ms;animation-timing-function:var(--kai-motion)}
+@keyframes kai-page-in{from{opacity:0}}
+.atlas-touch-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 0}
+.atlas-touch-tools button{min-height:44px;padding:10px 14px;border:1px solid #efede72a;border-radius:999px;font-size:16px;transition:background-color .2s ease,transform .2s var(--kai-motion)}
+.atlas-touch-tools button:active{transform:scale(.97)}
+.atlas-touch-tools button[aria-pressed=true]{background:#efede723}
+.atlas-touch-tools span{font:italic 16px Georgia,serif;margin-left:8px;color:#c6c1b6}
+#map-interact{display:none}
+.atlas-canvas{touch-action:pan-y pinch-zoom;position:relative}
+.atlas-canvas.is-interactive{touch-action:none;cursor:grab;border-radius:16px;outline:1px solid #efede738;outline-offset:2px}
+.atlas-canvas.is-interactive:active{cursor:grabbing}
+.atlas-region-list{max-height:min(52svh,480px);overflow:auto;overscroll-behavior:contain;padding:0 16px;margin-top:14px;border-radius:16px;background:#191915;border:1px solid #efede71c;scrollbar-color:#817e70 #191915}
+.atlas-region-list[hidden]{display:none!important}
+.atlas-region-list section{padding:20px 0 12px;border-bottom:1px solid #efede719}
+.atlas-region-list section:last-child{border:0}
+.atlas-region-list h2{font-size:26px;margin:0 0 10px}
+.atlas-region-author{font-size:14px;color:#bdb7a9;margin:4px 0}
+.atlas-region-list a{display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:48px;font-size:18px;border-radius:8px;padding:8px}
+.atlas-region-list a:hover{background:#efede70b}
+.atlas-region-list small{font-size:15px;color:#d2cec2;white-space:nowrap}
+.atlas-preview .atlas-work-link{min-height:48px}
+@media(pointer:coarse){#map-interact{display:inline-flex;align-items:center}}
+@media(max-width:760px){
+ .visitor-mode .home{min-height:560px;height:100svh}
+ #map-interact{display:inline-flex;align-items:center}
+ .visitor-mode .mobile-nav{bottom:max(12px,env(safe-area-inset-bottom));padding:6px;gap:2px;backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%)}
+ .visitor-mode .mobile-nav a{font-size:16px;padding:10px 6px;min-height:44px}
+ .visitor-mode .home-footer{bottom:calc(88px + env(safe-area-inset-bottom));font-size:16px}
+ .home-footer .cover-controls{font-size:16px;gap:4px}
+ .home-footer .cover-controls button{min-width:44px;min-height:44px;padding:8px;font-size:16px}
+ .home-footer #cover-view{min-width:70px}
+ .home-index .index-title{font-size:50px;font-family:var(--kai-serif)}
+ .home-index .index-english{font-size:11px;letter-spacing:.17em}
+ .page-head p,.series-intro p,.chapter-heading p,.about-section p{font-size:16px;line-height:1.8}
+ .chapter-nav a,.chapters-authors a,.chapters-switch a{font-size:16px;min-height:44px;display:inline-flex;align-items:center}
+ .backdrop img{animation:none!important}
+ .hero-enter .backdrops{animation:none!important}
+ .liquid-glass .glass-ripple{display:none}
+ .atlas-preview-page .atlas-map-hint{font-size:16px}
+ .atlas-preview-page .atlas-canvas{margin-top:12px}
+ .atlas-preview{scroll-margin-top:90px}
+ .atlas-preview .atlas-work-link{flex-wrap:wrap;gap:4px 8px}
+ .atlas-preview .atlas-enter{font-size:16px}
+ .atlas-preview-copy{min-width:0}
+ .about-footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+}
+@media(max-width:760px) and (orientation:portrait){.backdrop img{object-position:var(--mobile-focus,50% 50%)}}
+@media(max-height:650px) and (orientation:portrait){
+ .visitor-mode .home-index{gap:16px;top:43%}
+ .home-index .index-title{font-size:42px}
+ .home-index .index-english{margin-top:3px;font-size:10px}
+ .visitor-mode .home-footer{bottom:82px}
+ .home-dynamic .reference-notice{top:22px;bottom:auto;left:12px;width:auto;padding:0;background:none;font-size:10px}
+}
+@media(max-width:1000px) and (max-height:500px) and (orientation:landscape){
+ .visitor-mode .home{min-height:100svh}
+ .visitor-mode .home-index{top:48%;gap:10px}
+ .home-index .index-title{font-size:36px;line-height:1.05}
+ .home-index .index-english{font-size:10px;margin-top:2px}
+ .visitor-mode .desktop-nav{display:none}
+ .visitor-mode .mobile-nav{display:flex;position:fixed;left:auto;right:max(12px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom));transform:none;width:310px;z-index:40;gap:2px;padding:6px;border-radius:999px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+ .visitor-mode .mobile-nav a{display:flex;flex:1;align-items:center;justify-content:center;min-height:44px;padding:8px 4px;font-size:16px}
+ .visitor-mode .home-footer{left:max(20px,env(safe-area-inset-left));right:auto;bottom:max(10px,env(safe-area-inset-bottom));display:block;font-size:16px;color:var(--paper)}
+ .home-footer>span{display:none}
+ .home-footer .cover-controls{gap:2px;font-size:16px}
+ .home-footer .cover-controls button{min-height:44px;min-width:44px;padding:8px;font-size:16px}
+ .home-footer #cover-view{min-width:70px}
+ .backdrop img,.hero-enter .backdrops{animation:none!important}
+ .home-dynamic .reference-notice{bottom:72px;left:20px;width:auto;padding:0;background:none;font-size:12px}
+ #map-interact{display:inline-flex;align-items:center}
+ .visitor-mode .site-header{padding-top:max(10px,env(safe-area-inset-top));height:64px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ @view-transition{navigation:none}
+ #main.kai-live-reveal,.backdrop,.backdrop img,.hero-enter .backdrops,.mobile-nav a,.desktop-nav>a,.atlas-touch-tools button{animation:none!important;transition:none!important;transform:none!important;filter:none!important}
+ ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}

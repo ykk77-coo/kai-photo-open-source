@@ -1,0 +1,44 @@
+.immersive-viewer{--frame-ink:#eeeae0;--frame-soft:#c6c9b9;--frame-line:#d5dec42b;--frame-hover:#e2e9ce16;--frame-selected:#dce6c622;transition:background-color .18s ease,color .18s ease}
+.immersive-viewer .viewer-more-panel{max-height:calc(100svh - 132px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#758269 transparent}
+.immersive-viewer .viewer-frame{padding:9px 5px 13px;margin-bottom:4px;border-bottom:1px solid var(--frame-line)}
+.immersive-viewer #viewer-frame-label{display:flex;align-items:baseline;gap:8px;padding:0 7px 10px;font-size:16px;color:var(--frame-ink)}
+.immersive-viewer #viewer-frame-label small{margin:0;font:italic 15px Georgia,serif;color:var(--frame-soft)}
+.immersive-viewer .viewer-frame-options{display:flex;gap:5px}
+.immersive-viewer .viewer-frame-options button{flex:1;min-width:0;min-height:44px;justify-content:center;gap:9px;padding:8px 6px;font-size:16px;color:var(--frame-ink);transition:background-color .18s ease,color .18s ease}
+.immersive-viewer .viewer-frame-options button[aria-checked=true]{background:var(--frame-selected);box-shadow:inset 0 0 0 1px var(--frame-line)}
+.frame-swatch{width:15px;height:15px;border-radius:50%;box-shadow:inset 0 0 0 1px #83877a;flex:none}
+.frame-swatch-dark{background:#12130f}.frame-swatch-paper{background:#f0ede6}
+.immersive-viewer .photo-field-notes{margin-top:24px;padding:16px 0;border-top:1px solid var(--frame-line);border-bottom:1px solid var(--frame-line);color:var(--frame-ink)}
+.immersive-viewer .photo-field-notes summary{display:flex;align-items:center;gap:9px;min-height:44px;font-size:17px;cursor:pointer;list-style:none}
+.immersive-viewer .photo-field-notes summary::-webkit-details-marker{display:none}
+.immersive-viewer .photo-field-notes summary span{font:italic 15px Georgia,serif;color:var(--frame-soft)}
+.immersive-viewer .photo-field-notes summary svg{margin-left:auto;width:17px;transition:transform .18s ease}
+.immersive-viewer .photo-field-notes[open] summary svg{transform:rotate(180deg)}
+.immersive-viewer .field-notes-text{font:400 19px/1.9 Georgia,"KAI Serif","Songti SC",serif;letter-spacing:.01em;overflow-wrap:anywhere;white-space:pre-line}
+.immersive-viewer #photo-info .field-notes-text p{margin:16px 0 0;color:inherit}
+.immersive-viewer #photo-info .field-notes-review{display:block;margin-top:10px;color:var(--frame-soft);font:14px/1.6 Hanken,"Microsoft YaHei",sans-serif}
+.immersive-viewer #photo-info{touch-action:pan-y;overscroll-behavior:contain}
+.immersive-viewer[data-frame=paper]{--frame-ink:#292b25;--frame-soft:#5d6255;--frame-line:#6d705a40;--frame-hover:#69745313;--frame-selected:#69745323;background:#f0ede6;color:var(--frame-ink);color-scheme:light}
+.immersive-viewer[data-frame=paper]::backdrop{background:#f0ede6}
+.immersive-viewer[data-frame=paper] ::selection{background:#d7ddc8;color:#20261c}
+.immersive-viewer[data-frame=paper] header,.immersive-viewer[data-frame=paper] #viewer-title,.immersive-viewer[data-frame=paper] #photo-count,.immersive-viewer[data-frame=paper] #photo-info strong,.immersive-viewer[data-frame=paper] .exif-list dd{color:var(--frame-ink)}
+.immersive-viewer[data-frame=paper] #lightbox-credit,.immersive-viewer[data-frame=paper] #photo-count small,.immersive-viewer[data-frame=paper] #photo-info small,.immersive-viewer[data-frame=paper] .exif-list dt,.immersive-viewer[data-frame=paper] .viewer-more-panel small{color:var(--frame-soft)}
+.immersive-viewer[data-frame=paper] #photo-close{background:#fdfcf5cc;color:var(--frame-ink)}
+.immersive-viewer[data-frame=paper] .photo-tools{background:linear-gradient(145deg,#fffef5d9,#e3e4d8ed);box-shadow:inset 0 1px 0 #ffffff,0 12px 36px -18px #313b3040;color:var(--frame-ink)}
+.immersive-viewer[data-frame=paper] .viewer-more-panel{background:#f7f6eef7;box-shadow:0 16px 40px -14px #313b303d;scrollbar-color:#8c927d transparent}
+.immersive-viewer[data-frame=paper] .viewer-more-panel button,.immersive-viewer[data-frame=paper] .viewer-more-panel a{color:var(--frame-ink)}
+.immersive-viewer[data-frame=paper] .viewer-more-panel button:hover,.immersive-viewer[data-frame=paper] .viewer-more-panel a:hover,.immersive-viewer[data-frame=paper] .photo-tools>button:hover,.immersive-viewer[data-frame=paper] #photo-close:hover{background:var(--frame-hover)}
+.immersive-viewer[data-frame=paper] #photo-info-toggle[aria-expanded=true],.immersive-viewer[data-frame=paper] #viewer-more[aria-expanded=true]{background:var(--frame-selected)}
+.immersive-viewer[data-frame=paper] #photo-info{color:var(--frame-ink);border-color:var(--frame-line);scrollbar-color:#8c927d transparent}
+.immersive-viewer[data-frame=paper] .exif-list>div,.immersive-viewer[data-frame=paper] .viewer-original{border-color:var(--frame-line)}
+.immersive-viewer[data-frame=paper] #copy-status:not(:empty),.immersive-viewer[data-frame=paper] .viewer-hint,.immersive-viewer[data-frame=paper] .viewer-load-state{background:#f7f6eef5;color:var(--frame-ink)}
+.immersive-viewer[data-frame=paper] .viewer-hint span,.immersive-viewer[data-frame=paper] .viewer-load-state small{color:var(--frame-soft)}
+.immersive-viewer[data-frame=paper] .viewer-load-state button{background:#dce2cf;color:#20261c}
+.immersive-viewer[data-frame=paper] :focus-visible{outline:2px solid #4d6241;outline-offset:4px}
+@media(max-width:760px){
+ .immersive-viewer[data-frame=paper] #photo-info{background:#f7f6eef7;box-shadow:0 -12px 36px -22px #313b3050}
+ .immersive-viewer .field-notes-text{font-size:18px;line-height:1.9}
+}
+@media(prefers-reduced-motion:reduce){
+ .immersive-viewer,.immersive-viewer .viewer-frame-options button,.immersive-viewer .photo-field-notes summary svg{transition:none}
+}

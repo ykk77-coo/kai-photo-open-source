@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>旅行唱片 · KAI 制作手册</title>
+  <link rel="stylesheet" href="../demo.css">
+  <style>
+    .deck {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      background: #fffaf1;
+      border: 1px solid #cbbfa9;
+      border-radius: .7rem;
+      overflow: hidden;
+    }
+    .stage {
+      display: grid;
+      place-items: center;
+      min-height: 21rem;
+      padding: 2rem;
+      background: #282d27;
+      perspective: 750px;
+    }
+    .record {
+      position: relative;
+      width: min(70%, 17.5rem);
+      aspect-ratio: 1;
+      transform-style: preserve-3d;
+    }
+    .sleeve, .disc { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .sleeve { object-fit: cover; border: .4rem solid #d8ccb6; }
+    .disc {
+      visibility: hidden;
+      border-radius: 50%;
+      background: radial-gradient(circle, #202421 0 3%, #a58159 4% 17%, #242923 18% 100%);
+      background-image: radial-gradient(circle, #202421 0 3%, #a58159 4% 16%, transparent 17%),
+                        repeating-radial-gradient(circle, #202421 0 4px, #323831 5px 6px);
+    }
+    .deck[data-perspective] .record { transform: translateX(-14%) rotateY(-25deg) rotateZ(-5deg); }
+    .deck[data-perspective] .disc { visibility: visible; transform: translate3d(36%, 0, -10px); }
+    @media (prefers-reduced-motion: no-preference) {
+      .record { transition: transform .25s ease; }
+    }
+    .description { padding: clamp(1.25rem, 4vw, 2.5rem); align-self: center; }
+    .description h2 { font: 600 2.25rem Georgia, "Songti SC", SimSun, serif; margin: 0 0 .9rem; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; margin: 1.1rem 0; }
+    .status { color: #704332; }
+    @media (max-width: 44rem) {
+      .deck { grid-template-columns: minmax(0, 1fr); }
+      .stage { min-height: 0; padding: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="../../index.html">← Lumen 首页</a>
+    <header class="intro">
+      <h1>旅行唱片</h1>
+      <p>选一程，试着开启立体模式，再打开对应的相册。</p>
+    </header>
+    <section class="deck" id="deck" aria-labelledby="record-title">
+      <div class="stage">
+        <div class="record">
+          <span class="disc" aria-hidden="true"></span>
+          <img class="sleeve" id="record-art" src="../../assets/demo/demo-01.svg" alt="山间示例封面">
+        </div>
+      </div>
+      <div class="description">
+        <h2 id="record-title">山间</h2>
+        <a id="record-link" href="../../series.html?author=kai&amp;place=%E5%B1%B1%E9%97%B4">打开相册 →</a>
+        <div class="actions">
+          <label for="record-select">选片</label>
+          <select id="record-select">
+            <option value="hills">山间</option>
+            <option value="city">城中</option>
+          </select>
+          <button id="perspective-toggle" type="button" aria-pressed="false">立体模式</button>
+        </div>
+        <p class="status" id="record-status" role="status"></p>
+      </div>
+    </section>
+  </main>
+  <script type="module">
+    const records = {
+      hills: { title: '山间', cover: 'demo-01.svg' },
+      city: { title: '城中', cover: 'demo-05.svg' },
+    };
+    const deck = document.querySelector('#deck');
+    const picker = document.querySelector('#record-select');
+    const title = document.querySelector('#record-title');
+    const cover = document.querySelector('#record-art');
+    const link = document.querySelector('#record-link');
+    const toggle = document.querySelector('#perspective-toggle');
+    const status = document.querySelector('#record-status');
+
+    function showSelected() {
+      const record = records[picker.value];
+      title.textContent = record.title;
+      cover.src = '../../assets/demo/' + record.cover;
+      cover.alt = record.title + '示例封面';
+      link.href = '../../series.html?author=kai&place=' + encodeURIComponent(record.title);
+    }
+
+    picker.addEventListener('change', showSelected);
+    showSelected();
+
+    toggle.addEventListener('click', async () => {
+      if (toggle.getAttribute('aria-busy') === 'true') return;
+      toggle.setAttribute('aria-busy', 'true');
+      status.textContent = '';
+      try {
+        const { togglePerspective } = await import('./perspective.js');
+        toggle.setAttribute('aria-pressed', String(togglePerspective(deck)));
+      } catch {
+        status.textContent = '立体模式暂不可用，可以继续选片和打开相册。';
+      } finally {
+        toggle.removeAttribute('aria-busy');
+      }
+    });
+  </script>
+</body>
+</html>

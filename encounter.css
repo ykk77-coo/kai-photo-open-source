@@ -1,0 +1,11 @@
+.encounter-entry{max-width:1100px;margin:0 auto 16px}
+#encounter-open{width:100%;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 14px 12px 84px;border-radius:12px;text-align:left}
+.encounter-copy{font:24px/1.5 Georgia,"Songti SC",SimSun,serif}
+.encounter-copy small{font:14px/1.5 Hanken,sans-serif;color:#cecac0;margin-left:14px}
+#encounter-open svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.2;transition:transform .22s ease;flex-shrink:0}
+#encounter-open:hover:not(:disabled){background:#efede70a}
+#encounter-open:hover:not(:disabled) svg{transform:translateX(4px)}
+#encounter-open:active:not(:disabled){background:#efede712}
+#encounter-availability{font-size:16px;line-height:1.6;color:#cecac0;margin:2px 14px 10px 84px}
+@media(max-width:760px){.encounter-entry{margin-bottom:10px}#encounter-open{padding:10px 8px 10px 64px;min-height:62px;gap:12px}.encounter-copy{font-size:23px}.encounter-copy small{display:block;margin-left:0;font-size:13px}#encounter-availability{margin:2px 8px 10px 64px;font-size:16px}}
+@media(prefers-reduced-motion:reduce){#encounter-open svg{transition:none}#encounter-open:hover:not(:disabled) svg{transform:none}}

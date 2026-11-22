@@ -1,0 +1,16 @@
+{
+  "name": "kai-photo-open-source",
+  "version": "0.2.0",
+  "private": true,
+  "description": "A configurable static photography portfolio template",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "test": "node tests/flows.cjs && node tests/options.cjs"
+  },
+  "devDependencies": {
+    "happy-dom": "21.0.4"
+  }
+}

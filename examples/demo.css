@@ -1,0 +1,36 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: #26251f;
+  background: #f4eee2;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+main, .shell { width: min(100% - 2rem, 66rem); margin-inline: auto; }
+h1 {
+  margin: 0 0 .6rem;
+  font: 600 clamp(2.25rem, 6vw, 4.25rem)/1.1 Georgia, "Songti SC", SimSun, serif;
+  letter-spacing: -.04em;
+}
+p { margin: 0; line-height: 1.65; color: #50483c; }
+a { color: #405a4e; text-underline-offset: .22em; }
+a:hover { color: #202c25; }
+:focus-visible { outline: 3px solid #855538; outline-offset: 3px; }
+button, select {
+  min-height: 2.75rem;
+  border: 1px solid #a89b88;
+  border-radius: .4rem;
+  padding: .5rem .8rem;
+  font: inherit;
+  color: inherit;
+  background: #fffaf1;
+}
+button { cursor: pointer; }
+button[aria-pressed="true"] { background: #304338; color: #fffaf1; }
+.back { display: inline-block; padding-block: .9rem; font-size: .92rem; }
+.intro { margin-block: 1.2rem 1.6rem; }
+
+@media (max-width: 34rem) {
+  main, .shell { width: calc(100% - 1.5rem); }
+}

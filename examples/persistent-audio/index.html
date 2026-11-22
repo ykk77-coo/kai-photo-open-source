@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>跨页音乐 · KAI 制作手册</title>
+  <link rel="stylesheet" href="../demo.css">
+  <style>
+    .shell { border-bottom: 1px solid #cec0ab; padding-bottom: .8rem; }
+    nav { display: flex; gap: 1.25rem; margin-block: .5rem; }
+    nav [aria-current="page"] { color: #26251f; font-weight: 650; }
+    .player { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin-top: 1rem; }
+    audio { display: block; width: min(100%, 22rem); }
+    main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center; gap: 2rem; padding-block: 1.5rem; }
+    main img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: .45rem; }
+    @media (max-width: 44rem) {
+      main { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <a class="back" href="../../index.html">← Lumen 首页</a>
+    <nav id="audio-demo-nav" aria-label="示例页面">
+      <a href="#works" aria-current="page">作品</a>
+      <a href="#journey">旅程</a>
+    </nav>
+    <div class="player">
+      <span id="audio-label">示例音源</span>
+      <audio src="./lumen-tone.wav" controls preload="none" aria-labelledby="audio-label"></audio>
+    </div>
+  </header>
+  <main id="content" tabindex="-1">
+    <div>
+      <h1>山野作品</h1>
+      <p>播放示例音源，再点「旅程」，听音乐是否继续。</p>
+    </div>
+    <img src="../../assets/demo/demo-01.svg" alt="山野示意图">
+  </main>
+  <template id="works">
+    <div>
+      <h1>山野作品</h1>
+      <p>播放示例音源，再点「旅程」，听音乐是否继续。</p>
+    </div>
+    <img src="../../assets/demo/demo-01.svg" alt="山野示意图">
+  </template>
+  <template id="journey">
+    <div>
+      <h1>山间旅程</h1>
+      <p>此处已经切到旅程。用浏览器前进或后退，观察播放器的进度。</p>
+    </div>
+    <img src="../../assets/demo/demo-02.svg" alt="山间旅程示意图">
+  </template>
+  <script type="module">
+    const content = document.querySelector('#content');
+    const links = document.querySelectorAll('#audio-demo-nav a');
+    const views = {
+      works: document.querySelector('#works'),
+      journey: document.querySelector('#journey'),
+    };
+
+    function showRoute(moveFocus) {
+      const route = location.hash === '#journey' ? 'journey' : 'works';
+      content.replaceChildren(views[route].content.cloneNode(true));
+      for (const link of links) {
+        if (link.hash === '#' + route) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      }
+      if (moveFocus) content.focus();
+    }
+
+    showRoute(false);
+    window.addEventListener('hashchange', () => showRoute(true));
+  </script>
+</body>
+</html>
