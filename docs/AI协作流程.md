@@ -26,9 +26,15 @@
 
 ## 在编程助手中加载 Skill
 
-把完整的 [`ai-photography-site/`](../skills/ai-photography-site) 目录复制到你的项目中。打开项目后调用对应名称。
+克隆仓库或[下载 ZIP](https://github.com/ykk77-coo/kai-photo-open-source/archive/refs/heads/main.zip)并解压，用 **Codex、Gemini CLI 或 DeepSeek Harness 打开仓库根目录**。三者共用 [`.agents/skills/` 里的入口](../.agents/skills/ai-photography-site/SKILL.md)。调用后描述你的照片和想法。
 
-| 工具 | 项目内路径 | 调用 |
-| --- | --- | --- |
-| Codex | `.agents/skills/ai-photography-site/` | `$ai-photography-site` [官方说明](https://learn.chatgpt.com/docs/build-skills) |
-| Claude Code | `.claude/skills/ai-photography-site/` | `/ai-photography-site` [官方说明](https://code.claude.com/docs/en/skills) |
+| 平台 | 开始方式 |
+| --- | --- |
+| Codex | 发送 `$ai-photography-site`，接着描述你的照片与目标。 [官方说明](https://learn.chatgpt.com/docs/build-skills) |
+| Gemini CLI | 信任当前项目后，用 `/skills list` 查看，再发送「请用 ai-photography-site 帮我做摄影网站」。提示激活时确认即可。 [官方说明](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/using-agent-skills.md) |
+| DeepSeek Harness | 选仓库根目录做工作区，在输入框输入 `/ai-photography-site` 并选中该 Skill，再补上自己的需求。 [官方目录说明](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/skills.zh.md#本地发现优先级) |
+| Gemini 网页版 | 账号有 Skills 页面时，选择「创建 → 上传」，选解压后的 [完整 Skill 文件夹](../skills/ai-photography-site)，创建后从聊天的技能列表选用。 [官方上传说明](https://support.google.com/gemini/answer/18977944) |
+
+**用在已有网站项目里**　把下载后的 [完整 `ai-photography-site/` 文件夹](../skills/ai-photography-site)复制到你的网站项目的 `.agents/skills/`，确认文件位于 `.agents/skills/ai-photography-site/SKILL.md`，再从项目打开编程助手。用 Claude Code 时，放到 `.claude/skills/`，调用 `/ai-photography-site`。 [Claude Code 官方说明](https://code.claude.com/docs/en/skills)
+
+**只用聊天**　上传或粘贴 [完整 `SKILL.md`](../skills/ai-photography-site/SKILL.md)，也可以直接用[首页提示词](../README.md#复制即用)。联网、文件操作和多 Agent 分工按当前会话的能力启用。
