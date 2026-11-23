@@ -7,9 +7,14 @@
 .visitor-mode .site-header.on-paper .desktop-nav>a{color:#49473f}
 .visitor-mode .site-header.on-paper .desktop-nav>a:hover,.visitor-mode .site-header.on-paper .desktop-nav>a[aria-current]{color:#171611}
 .visitor-mode .site-header.on-paper .desktop-nav>a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
-.visitor-mode .reference-notice:has(#mode-note){pointer-events:none}
-.visitor-mode .browse-opener{font:16px/1.5 Hanken,"Songti SC",SimSun,serif;border-bottom:1px solid currentColor;padding:9px 0;min-height:44px;justify-self:end;align-self:end;white-space:nowrap}
-.visitor-mode .a-head{flex-wrap:wrap;gap:24px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.visitor-mode .desktop-nav .browse-opener{font-size:15px;line-height:1.5;padding:8px 13px;min-height:44px;border:1px solid currentColor;white-space:nowrap}
+.visitor-mode .browse-opener:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.visitor-mode .desktop-nav .browse-opener:hover{background:#efede720}
+.visitor-mode .about-footer:has(.demo-note){flex-wrap:wrap;column-gap:24px}
+.visitor-mode .about-footer>a{display:inline-flex;align-items:center;min-height:24px}
+.visitor-mode .demo-note{flex-basis:100%;margin:0 0 12px;line-height:1.6}
+.visitor-mode .home-credit{padding-top:20px}
 .visitor-mode .menu-dialog{inset:0;width:calc(100% - 64px);max-width:760px;height:max-content;max-height:calc(100svh - 100px);margin:auto;padding:0 32px 28px;border:1px solid #efede72b;border-radius:24px;background:#171611f5;overflow:auto;box-shadow:0 24px 70px #0005}
 .visitor-mode .menu-top{height:82px;padding:0;gap:24px;position:sticky;top:0;z-index:2;background:#171611}
 .visitor-mode .menu-top h2{font:24px/1.4 Georgia,"Songti SC",SimSun,serif;margin:0}
@@ -28,8 +33,6 @@
  .visitor-mode .desktop-nav{display:none}
  .visitor-mode .mobile-nav{width:min(360px,calc(100% - 32px));left:50%;right:auto;transform:translateX(-50%);padding:6px 10px;gap:4px}
  .visitor-mode .mobile-nav a{flex:1;font-size:16px;line-height:1.5;min-height:44px;padding:8px 14px;white-space:nowrap}
- .visitor-mode .a-head{gap:18px}
- .visitor-mode .browse-opener{margin-left:auto}
  .visitor-mode .menu-dialog{width:calc(100% - 24px);max-height:calc(100svh - 110px);max-width:600px;inset:auto 0 82px;padding:0 20px 18px;margin:0 auto;border-radius:22px}
  .visitor-mode .menu-top{height:66px}
  .visitor-mode .menu-top h2{font-size:22px}
@@ -41,6 +44,7 @@
 
 .visitor-mode.home-dynamic .site-header>.logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
 .home-dynamic .desktop-nav{margin-left:auto}
+@media(min-width:761px) and (max-width:1080px){.visitor-mode.home-dynamic .site-header>.logo{position:static;transform:none}}
 .home-dynamic .desktop-nav .nav-trigger{font-size:16px;letter-spacing:.02em}
 .home-dynamic .chapter-card strong{font-size:18px}
 .home-dynamic .chapter-card small{font-size:14px;line-height:1.6}

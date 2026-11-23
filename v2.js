@@ -13,11 +13,11 @@ const authorOptions=(selected)=>Object.entries(site.authors).filter(([id])=>feat
 const wrapPhotoIndex=(index,count)=>(index+count)%count;
 const filterPhotos=({author='kai',place='',theme='',time='',region='',tag='',travel=false})=>photos.filter(p=>p.author===author&&(!place||p.place===place)&&(!theme||p.theme===theme)&&(!time||p.time===time)&&(!region||p.region===region)&&(!tag||p.tags?.includes(tag))&&(!travel||p.travel!==false));
 const workURL=(theme='',author='kai',place='')=>'works.html?'+new URLSearchParams({author,...(theme?{theme}:{}),...(place?{place}:{})});
-let placeholders=false,selection=[],photoIndex=0,photoReturnURL='',paused=reduced,activeCover=0,pageSelection=[];
+const hasDemoPhotos=photos.some(p=>p.urls.display.startsWith('assets/demo/'));
+let placeholders=false,selection=[],photoIndex=0,photoReturnURL='',photoOpener=null,paused=reduced,activeCover=0,pageSelection=[];
 document.title=site.brand.title;
 document.querySelector('meta[name="description"]').content=site.brand.description;
 document.querySelector('.logo').innerHTML=`${esc(site.brand.name)}<span>${esc(site.brand.subtitle)}</span><i>•</i>`;
-$('mode-note').textContent=site.brand.footer;
 
 function media(key,label,loading='lazy',size='display'){
  const p=photos.find(p=>p.image===key);
@@ -29,7 +29,8 @@ function media(key,label,loading='lazy',size='display'){
  return `<span class="media real-photo">${p.webp?.[variant]&&size!=='large'?`<picture><source type="image/webp" srcset="${esc(p.webp[variant])}">`:''}<img src="${esc(p.urls[variant])}" ${srcset} alt="${esc(p.label||label)}" loading="${loading}" width="${p.width}" height="${p.height}">${p.webp?.[variant]&&size!=='large'?'</picture>':''}</span>`;
 }
 function photoButton(p,extra='',size='display'){return `<button class="photo-button ${extra}" data-photo="${esc(p.id)}" aria-label="查看${esc(p.label)}">${media(p.image,p.label,'lazy',size)}</button>`;}
-function footer(){return `<footer class="about-footer"><span>${esc(site.brand.title)} · ${esc(site.brand.footer)}</span>${feature('map')?'<a href="journey.html">沿着行迹继续 ↗</a>':''}<a href="index.html">回到首页 ↑</a></footer>`;}
+function demoNote(){return hasDemoPhotos?'<p class="demo-note">示例图形 · 非摄影作品</p>':'';}
+function footer(){return `<footer class="about-footer">${demoNote()}<span>${esc(site.brand.title)} · ${esc(site.brand.footer)}</span>${feature('map')?'<a href="journey.html">沿着行迹继续 ↗</a>':''}<a href="index.html">回到首页 ↑</a></footer>`;}
 function authorTabs(view='journeys',selected='kai'){return `<nav class="chapters-authors" aria-label="选择摄影者">${Object.entries(site.authors).filter(([id])=>feature("secondAuthor")||id==="kai").map(([id,a])=>`<a href="chapters.html?${new URLSearchParams({author:id,...(view==='essays'?{view}:{})})}" ${id===selected?'aria-current="page"':''}>${esc(a.name)}</a>`).join('')}</nav>`;}
 function homeCover(c,i){
  const wide=photos.find(p=>p.image===c.image),portrait=photos.find(p=>p.image===c.portrait)||wide;
@@ -38,10 +39,10 @@ function homeCover(c,i){
 }
 function hydrateCover(i){const box=document.querySelectorAll('.backdrop')[i];box?.querySelectorAll('[data-src],[data-srcset]').forEach(e=>{for(const n of ['src','srcset'])if(e.hasAttribute('data-'+n)){e.setAttribute(n,e.getAttribute('data-'+n));e.removeAttribute('data-'+n);}});}
 function home(){
- $('main').innerHTML=`<section class="home" aria-label="摄影首页"><div class="backdrops">${categories.map((c,i)=>`<div class="backdrop ${i===0?'active':''} real-backdrop">${homeCover(c,i)}</div>`).join('')}</div><h1 class="skip">${esc(site.brand.title)}</h1><div class="home-index">${categories.map((c,i)=>`<a class="index-row ${i===0?'active':''}" data-cover="${i}" href="${i===3?'chapters.html':workURL(c.theme)}"><span class="index-number">0${i+1}</span><span class="index-title">${esc(c.name)}</span><small>${esc(c.desc)}</small></a>`).join('')}</div><footer class="home-footer"><span>${esc(categories.slice(0,3).map(c=>c.name).join(' · '))} / ${esc(site.brand.name)}</span><div class="cover-controls"><button id="cover-prev" aria-label="上一张封面">←</button><button id="cover-view" aria-label="查看当前封面完整照片"><span id="cover-count"></span></button><button id="cover-next" aria-label="下一张封面">→</button><button id="cover-pause">${paused?'播放':'暂停'}</button></div><span>${esc(site.brand.homeNote)}</span></footer></section>`;
+ $('main').innerHTML=`<section class="home" aria-label="摄影首页"><div class="backdrops">${categories.map((c,i)=>`<div class="backdrop ${i===0?'active':''} real-backdrop">${homeCover(c,i)}</div>`).join('')}</div><h1 class="skip">${esc(site.brand.title)}</h1><div class="home-index">${categories.map((c,i)=>`<a class="index-row ${i===0?'active':''}" data-cover="${i}" href="${i===3?'chapters.html':workURL(c.theme)}"><span class="index-number">0${i+1}</span><span class="index-title">${esc(c.name)}</span><small>${esc(c.desc)}</small></a>`).join('')}</div><footer class="home-footer"><span>${esc(categories.slice(0,3).map(c=>c.name).join(' · '))} / ${esc(site.brand.name)}</span><div class="cover-controls"><button id="cover-prev" aria-label="上一张封面">←</button><button id="cover-view"><span id="cover-count"></span><span class="sr-only">查看当前封面完整照片</span></button><button id="cover-next" aria-label="下一张封面">→</button><button id="cover-pause">${paused?'播放':'暂停'}</button></div><span>${esc(site.brand.homeNote)}</span></footer></section><footer class="about-footer home-credit">${demoNote()}<span>${esc(site.brand.footer)}</span></footer>`;
  const count=categories.length,change=n=>{activeCover=wrapPhotoIndex(n,count);hydrateCover(activeCover);document.querySelectorAll('.backdrop,[data-cover]').forEach(el=>el.classList.toggle('active',el.matches('.backdrop')?[...el.parentNode.children].indexOf(el)===activeCover:+el.dataset.cover===activeCover));$('cover-count').textContent=`${String(activeCover+1).padStart(2,'0')} / ${String(count).padStart(2,'0')}`;};
  document.querySelectorAll('[data-cover]').forEach(el=>{el.addEventListener('pointerenter',()=>change(+el.dataset.cover));el.addEventListener('focus',()=>change(+el.dataset.cover));});
- $('cover-view').onclick=()=>{const c=categories[activeCover],key=matchMedia('(max-width:760px) and (orientation:portrait)').matches?(c.portrait||c.image):c.image,p=photos.find(p=>p.image===key);if(!p)return;selection=photos.filter(item=>item.author===p.author);photoIndex=selection.findIndex(item=>item.id===p.id);photoReturnURL=location.href;showPhoto();};
+ $('cover-view').onclick=e=>{const c=categories[activeCover],key=matchMedia('(max-width:760px) and (orientation:portrait)').matches?(c.portrait||c.image):c.image,p=photos.find(p=>p.image===key);if(!p)return;selection=photos.filter(item=>item.author===p.author);photoIndex=selection.findIndex(item=>item.id===p.id);photoReturnURL=location.href;showPhoto(e.currentTarget);};
  $('cover-prev').onclick=()=>change(activeCover-1);$('cover-next').onclick=()=>change(activeCover+1);$('cover-pause').onclick=()=>{paused=!paused;$('cover-pause').textContent=paused?'播放':'暂停';};change(0);
  setInterval(()=>{if(!paused&&!document.hidden&&!document.querySelector('dialog[open]'))change(activeCover+1);},6500);
 }
@@ -56,26 +57,36 @@ function about(){
 }
 function journey(){$('main').innerHTML=`<header class="page-head"><h1>行迹</h1><p>点亮的地方，留有光影。</p></header><div class="map-stage"></div>${footer()}`;}
 function series(){if(params.has('essay')){renderEssay();return;}const author=params.get('author')==='friend'?'friend':'kai',place=params.get('place')||filterPhotos({author})[0]?.place;if(filterPhotos({author,place}).length)realSeries(author,place);else renderArchivePage();}
-function bindPhotos(){document.querySelectorAll('[data-photo]').forEach(b=>b.onclick=()=>{const p=photos.find(p=>p.id===b.dataset.photo);if(!p)return;selection=photos.filter(picture=>picture.author===p.author);photoIndex=selection.findIndex(picture=>picture.id===p.id);photoReturnURL=location.href;showPhoto();});}
-function showPhoto(){
+function bindPhotos(){document.querySelectorAll('[data-photo]').forEach(b=>b.onclick=()=>{const p=photos.find(p=>p.id===b.dataset.photo);if(!p)return;selection=photos.filter(picture=>picture.author===p.author);photoIndex=selection.findIndex(picture=>picture.id===p.id);photoReturnURL=location.href;showPhoto(b);});}
+function showPhoto(opener=null){
  const p=selection[photoIndex];if(!p)return;
  $('lightbox-image').innerHTML=media(p.image,p.label,'eager','large');$('lightbox-credit').textContent=authorName(p.author)+' · '+p.region;
  $('photo-count').textContent=`${photoIndex+1} / ${selection.length}`;$('photo-prev').disabled=$('photo-next').disabled=selection.length<2;
  $('photo-info').innerHTML=photoMetadata(p);
  const url=new URL(location.href);url.searchParams.set('photo',p.id);history.replaceState(null,'',url);
- if(!$('lightbox').open){$('photo-info').hidden=true;$('photo-info-toggle').setAttribute('aria-expanded','false');$('copy-status').textContent='';$('lightbox').showModal();}
+ if(!$('lightbox').open){
+  photoOpener=opener;
+  $('photo-info').hidden=true;$('photo-info-toggle').setAttribute('aria-expanded','false');$('copy-status').textContent='';
+  $('lightbox').showModal();$('photo-close').focus({preventScroll:true});
+ }
  document.dispatchEvent(new CustomEvent('kai:photo-change',{detail:{photo:p,index:photoIndex,total:selection.length}}));
 }
 if(page==='chapters.html')renderChapters();else if(page==='series.html')series();else if(page==='about.html')about();else if(page==='journey.html')journey();else if(page==='works.html')renderArchivePage();else home();
 pageSelection=selection;bindPhotos();
 const currentAuthor=params.get('author')==='friend'?'friend':'kai';
 $('menu-rows').innerHTML=`<nav class="browse-links" aria-label="更多浏览方式"><a href="chapters.html?author=${currentAuthor}">旅行章节 <small lang="en">Journeys</small></a><a href="chapters.html?view=essays&author=${currentAuthor}">专题 <small lang="en">Essays</small></a><a href="works.html?author=${currentAuthor==='kai'?'friend':'kai'}">${esc(authorName(currentAuthor==='kai'?'friend':'kai'))} <small lang="en">Another perspective</small></a></nav>`;
-function openMenu(){$('menu').showModal();$('menu-open').setAttribute('aria-expanded','true');$('mobile-menu').setAttribute('aria-expanded','true');}
-$('menu-open').onclick=$('mobile-menu').onclick=openMenu;$('menu-close').onclick=()=>$('menu').close();
-$('menu').addEventListener('close',()=>{for(const id of ['menu-open','mobile-menu'])$(id).setAttribute('aria-expanded','false');});
 $('photo-close').onclick=()=>$('lightbox').close();$('sheet-close').onclick=()=>$('contact-sheet').close();
-$('lightbox').addEventListener('close',()=>{const url=new URL(photoReturnURL||location.href);url.searchParams.delete('photo');history.replaceState(null,'',url);});
-$('copy-photo').onclick=async()=>{const p=selection[photoIndex];if(!p)return;const url=new URL('works.html',location.href);url.searchParams.set('author',p.author);url.searchParams.set('photo',p.id);try{await navigator.clipboard.writeText(url.href);$('copy-status').textContent='照片链接已复制';}catch{$('copy-status').textContent='请复制此链接：'+url.href;}};
+$('lightbox').addEventListener('close',()=>{
+ const url=new URL(photoReturnURL||location.href);url.searchParams.delete('photo');history.replaceState(null,'',url);
+ if(photoOpener?.isConnected)photoOpener.focus({preventScroll:true});
+ photoOpener=null;
+});
+$('copy-photo').onclick=async()=>{
+ const p=selection[photoIndex];if(!p)return;
+ const landing=window.KAI_SHARE_LINKS?.get(p.id),url=new URL(landing||'works.html',location.href);
+ if(!landing){url.searchParams.set('author',p.author);url.searchParams.set('photo',p.id);}
+ try{await navigator.clipboard.writeText(url.href);$('copy-status').textContent='照片链接已复制';}catch{$('copy-status').textContent='请复制此链接：'+url.href;}
+};
 for(const dialog of document.querySelectorAll('dialog')){
  const sync=()=>document.body.style.overflow=document.querySelector('dialog[open]')?'hidden':'';
  dialog.addEventListener('close',sync);new MutationObserver(sync).observe(dialog,{attributes:true,attributeFilter:['open']});

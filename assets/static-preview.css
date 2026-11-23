@@ -1,0 +1,15 @@
+.static-preview {
+  max-width: 68rem;
+  margin-inline: auto;
+  padding: 7rem clamp(1rem, 6vw, 4rem) 8rem;
+  color: #efede7;
+  line-height: 1.65;
+}
+.static-preview h1 { font-size: clamp(2rem, 7vw, 4rem); line-height: 1.15; overflow-wrap: anywhere; }
+.static-preview p, .static-preview ul, .static-preview figure { margin: 1.25rem 0; }
+.static-preview a { text-decoration: underline; text-underline-offset: .2em; }
+.static-preview img { display: block; max-width: 100%; height: auto; }
+.static-preview figcaption { padding-top: .5rem; }
+.static-photo-page { background: #0f0e0c; margin: 0; font-family: system-ui, sans-serif; }
+.static-photo-page .static-preview { padding-top: 2rem; }
+.static-photo-page a { color: inherit; }

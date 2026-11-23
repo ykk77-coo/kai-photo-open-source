@@ -6,7 +6,7 @@ window.PHOTO_SITE = {
     "title": "Lumen｜所见之集",
     "description": "记录自己的旅行与日常。",
     "homeNote": "看见，停留，记下。",
-    "footer": "示例图形 · 非摄影作品"
+    "footer": "示例作者"
   },
   "authors": {
     "kai": {

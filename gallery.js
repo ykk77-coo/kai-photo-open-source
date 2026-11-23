@@ -132,7 +132,7 @@ function renderArchivePage(){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  $('menu').setAttribute('aria-label','作品目录');$('contact-sheet').setAttribute('aria-labelledby','sheet-title');
+  $('contact-sheet').setAttribute('aria-labelledby','sheet-title');
   $('lightbox').setAttribute('aria-labelledby','lightbox-credit');$('photo-info-toggle').setAttribute('aria-controls','photo-info');
   $('photo-prev').innerHTML=galleryIcon('prev');$('photo-next').innerHTML=galleryIcon('next');
   $('photo-close').innerHTML=galleryIcon('close')+'<span>关闭</span>';$('photo-close').setAttribute('aria-label','关闭照片');

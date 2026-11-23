@@ -4,7 +4,7 @@
   if(!reference){const english=categories.map(c=>c.en);document.querySelectorAll('.index-title').forEach((title,i)=>{const label=document.createElement('span');label.className='index-label';title.replaceWith(label);label.append(title);const subtitle=document.createElement('span');subtitle.className='index-english';subtitle.textContent=english[i];subtitle.setAttribute('aria-hidden','true');label.append(subtitle);});}
   // Small original line ornaments, separate from the photography itself.
   document.querySelectorAll('.page-head,.about-hero').forEach(head=>{const mark=document.createElement('div');mark.className='editorial-mark';mark.innerHTML=compass;mark.setAttribute('aria-hidden','true');head.append(mark);});
-  const glassTargets=document.querySelectorAll('.morph-dropdown,.mobile-nav,.atlas-toolbar,.atlas-selection,.menu-thumbnail,.desktop-nav #mode-toggle');
+  const glassTargets=document.querySelectorAll('.morph-dropdown,.mobile-nav,.atlas-toolbar,.atlas-selection,.menu-thumbnail');
   glassTargets.forEach(element=>{
     element.classList.add('liquid-glass');let frame=0;
     element.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse'||matchMedia('(prefers-reduced-motion: reduce)').matches)return;cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const r=element.getBoundingClientRect();element.style.setProperty('--glass-x',((e.clientX-r.left)/r.width*100)+'%');element.style.setProperty('--glass-y',((e.clientY-r.top)/r.height*100)+'%');element.style.setProperty('--glass-light','1');});});

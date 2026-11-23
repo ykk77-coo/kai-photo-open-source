@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   infoAvailability(selection[photoIndex]);
   document.addEventListener('kai:photo-change',e=>infoAvailability(e.detail.photo));
   const c=site.contact||{};
-  for(const host of document.querySelectorAll('.home-footer,.about-footer')){
+  for(const host of document.querySelectorAll('.home-footer,.about-footer:not(.home-credit)')){
     const links=document.createElement('span');links.className='site-contact';
     if(c.email){const a=document.createElement('a');a.href='mailto:'+c.email;a.textContent=c.email;links.append(a);}
     if(c.socialUrl){const a=document.createElement('a');a.href=c.socialUrl;a.textContent=c.socialLabel||'个人主页 ↗';a.target='_blank';a.rel='noopener noreferrer';links.append(a);}

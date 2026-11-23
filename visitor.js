@@ -1,23 +1,33 @@
-// Public navigation: direct routes; the existing dialog becomes Works' optional browser.
+// The same browse dialog serves the desktop and mobile navigation.
+const menuTriggers=[$('menu-open'),$('mobile-menu')],browseDialog=$('menu');
+const browseMobile=matchMedia('(max-width:760px), (max-width:1000px) and (max-height:500px) and (orientation:landscape)');
+const browseTrigger=()=>menuTriggers[Number(browseMobile.matches)];
+function openMenu(){
+  if(browseDialog.open)return;
+  browseDialog.showModal();
+  browseTrigger().setAttribute('aria-expanded','true');
+  $('menu-close').focus({preventScroll:true});
+}
 (()=>{
-  const opener=$('menu-open'),directory=$('menu'),mobile=matchMedia('(max-width:760px)');
-  let animation=null,closing=false;
-  if(page==='works.html'){
-    opener.textContent='更多浏览';opener.className='browse-opener';opener.setAttribute('aria-controls','menu');
-    document.querySelector('.a-head').append(opener);
-    $('archive-series').hidden=true;
-  }
-  directory.addEventListener('close',()=>{if(page==='works.html')opener.focus({preventScroll:true});});
+  if(page==='works.html')$('archive-series').hidden=true;
+  let animation=null;
   function close(){
-    if(!directory.open||closing)return;
-    if(reduced||!mobile.matches||!directory.animate){directory.close();return;}
-    closing=true;animation=directory.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(10px) scale(.99)'}],{duration:220,easing:'cubic-bezier(.22,1,.36,1)'});
-    const active=animation;active.finished.then(()=>{if(animation!==active)return;directory.close();closing=false;animation=null;},()=>{});
+    if(!browseDialog.open||animation)return;
+    if(reduced||!browseMobile.matches||!browseDialog.animate){browseDialog.close();return;}
+    animation=browseDialog.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(10px) scale(.99)'}],{duration:220,easing:'cubic-bezier(.22,1,.36,1)'});
+    const active=animation;
+    active.finished.then(()=>{if(animation===active)browseDialog.close();},()=>{});
   }
+  for(const trigger of menuTriggers)trigger.onclick=openMenu;
   $('menu-close').onclick=close;
-  directory.addEventListener('cancel',e=>{e.preventDefault();close();});
-  directory.addEventListener('click',e=>{if(e.target.closest('a'))directory.close();});
-  mobile.addEventListener('change',()=>{animation?.cancel();animation=null;closing=false;if(directory.open)directory.close();});
+  browseDialog.addEventListener('cancel',e=>{e.preventDefault();close();});
+  browseDialog.addEventListener('click',e=>{if(e.target.closest('a'))browseDialog.close();});
+  browseDialog.addEventListener('close',()=>{
+    animation?.cancel();animation=null;
+    for(const trigger of menuTriggers)trigger.setAttribute('aria-expanded','false');
+    if(!$('lightbox').open)browseTrigger().focus({preventScroll:true});
+  });
+  browseMobile.addEventListener('change',()=>{if(browseDialog.open)browseDialog.close();});
   for(const nav of document.querySelectorAll('.desktop-nav,.mobile-nav')){
     for(const link of nav.querySelectorAll('a')){
       const route=link.getAttribute('href');
@@ -28,6 +38,4 @@
   mobileNav.insertAdjacentHTML('afterbegin','<a href="index.html">首页</a>');
   if(page!=='index.html')desktopNav.insertAdjacentHTML('afterbegin','<a href="index.html">首页</a>');
   mobileNav.querySelector('a[href="index.html"]')?.setAttribute('aria-current',page==='index.html'?'page':'false');
-  const homeElement=document.querySelector('.home');
-  if(homeElement&&!readSession('kai-hero-entered')){homeElement.classList.add('hero-enter');writeSession('kai-hero-entered','1');}
 })();

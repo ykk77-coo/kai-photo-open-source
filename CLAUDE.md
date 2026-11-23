@@ -1,2 +1,3 @@
 # Claude Code entry
-Read AGENTS.md, START_HERE.md, then docs/AI协作流程.md. Follow the same staged conversation and approval gates. Do not assume that browser tools, other skills or subscriptions are installed; use available tools and state verification limits. No extra plugin or hook is required.
+
+Read [AGENTS.md](AGENTS.md). For photography-site design and generation, load [ai-photography-site](skills/ai-photography-site/SKILL.md) and follow its workflow.

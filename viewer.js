@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   };
   const icon=name=>`<svg viewBox="0 0 20 20" aria-hidden="true">${icons[name]}</svg>`;
   box.classList.add('immersive-viewer');
-  $('photo-close').remove();box.appendChild(Object.assign(document.createElement('button'),{id:'photo-close',type:'button',innerHTML:galleryIcon('close')+'<span>关闭</span>'}));
+  $('photo-close').remove();box.prepend(Object.assign(document.createElement('button'),{id:'photo-close',type:'button',innerHTML:galleryIcon('close')+'<span>关闭</span>'}));
   const close=$('photo-close');close.setAttribute('aria-label','关闭照片');close.onclick=()=>box.close();
   header.insertAdjacentHTML('afterbegin','<h2 id="viewer-title"></h2>');
   box.setAttribute('aria-labelledby','viewer-title');
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(fresh)$('copy-status').textContent='';
     $('viewer-title').textContent=p.title||p.label;
     $('lightbox-credit').textContent=`${authorName(p.author)} · ${p.region}`;
-    $('photo-count').innerHTML=`<small>${p.real?'全部光影':'参考位置'}</small><span>${String(index+1).padStart(2,'0')} / ${total}</span>`;
+    $('photo-count').innerHTML=`<small aria-hidden="true">${p.real?'全部光影':'参考位置'}</small><span aria-hidden="true">${String(index+1).padStart(2,'0')} / ${total}</span><span class="sr-only">第 ${index+1} 张，共 ${total} 张</span>`;
     $('photo-count').setAttribute('aria-live','polite');
     const img=stage.querySelector('img');
     if(!img)return;
