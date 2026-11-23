@@ -2,6 +2,7 @@
 import argparse
 import json
 from pathlib import Path, PurePosixPath
+from posixpath import normpath
 import re
 import stat
 from urllib.parse import urlsplit
@@ -190,9 +191,10 @@ def validate(root=ROOT, *, warnings=None):
             if not url.startswith(('http:','https:')):
                 relative=url.split('?')[0]
                 local_file(root,relative+'index.html' if relative.endswith('/') else relative)
-    for css in root.glob('*.css'):
+    for css in (*root.glob('*.css'), *(root/'styles').glob('*.css'), *(root/'assets').glob('*.css')):
         for url in re.findall(r'url\([\'\"]?([^\)\'\"]+)',css.read_text(encoding='utf-8')):
-            local_file(root,url)
+            relative = normpath((css.parent.relative_to(root) / url).as_posix())
+            local_file(root, relative)
     return config,photos
 
 if __name__=='__main__':

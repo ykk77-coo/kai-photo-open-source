@@ -1,6 +1,6 @@
 # 五课做出自己的摄影网站
 
-先发 [Skill 和开场提示词](../START_HERE.md)。接着在同一段对话里，按需要复制下面的提示词。
+先发 [Skill](../skills/ai-photography-site/SKILL.md) 和[开场提示词](../README.md#开场提示词)。接着在同一段对话里按需要复制下面的提示词。
 
 ## 第 1 课　挑照片
 

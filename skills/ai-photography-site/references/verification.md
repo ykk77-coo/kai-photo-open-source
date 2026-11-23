@@ -10,4 +10,4 @@
 | 交互 | 点首要入口，打开并关闭看图器，验证浏览位置、键盘焦点、控件名称和减弱动态 |
 | 交付 | 记录执行动作、结果和剩余缺口，公开照片、文字和目标经用户确认 |
 
-使用 Lumen 时，在项目根目录运行 `python tools/verify.py`。它会按当前目录检查照片引用、生成临时静态站和核对导出链接。已有目标域名时可加 `--site-url https://example.com/photos/`。维护者用 `npm test` 回归默认示例。如果当前 AI 只能聊天，给用户可照做的短步骤，记录其反馈。 [Skill 情景测试](../evals/scenarios.md)
+使用 Lumen 时，进入 `lumen/` 并运行 `python tools/verify.py`。它会检查照片引用、生成临时静态站和核对导出链接。已有目标域名时可加 `--site-url https://example.com/photos/`。维护者用 `npm test` 回归默认示例。如果当前 AI 只能聊天，给用户可照做的短步骤，记录其反馈。 [Skill 情景测试](../evals/scenarios.md)

@@ -12,7 +12,9 @@ def public_source_files(photos):
              'continue.js','encounter.js','encounter-bag.js','v2.css','gallery.css','essays.css','atlas.css',
              'navigation.css','visitor.css','polish.css','viewer.css','continue.css','encounter.css','cities.css',
              'features.js','features.css','mobile-refinement.css','viewer-experience.js','viewer-experience.css','further.js','further.css','LICENSE','THIRD_PARTY_NOTICES.md']
-    files={Path(name) for name in runtime}
+    files={Path('scripts', name) if name.endswith('.js') and name != 'site.config.js'
+           else Path('styles', name) if name.endswith('.css') else Path(name)
+           for name in runtime}
     files|={Path(p) for photo in photos for p in photo['urls'].values()}
     files|={Path(url) for photo in photos for url in photo.get('webp',{}).values()}
     files|={Path('content/photos.js'),Path('assets/china-map.js'),Path('assets/hanken.woff2'),Path('assets/Hanken-OFL.txt'),

@@ -141,7 +141,7 @@ def render_page(source, page, config, photos, base, shares):
     source = re.sub(r"<title>.*?</title>", lambda _: f"<title>{escape(title)}</title>", source, count=1)
     source = re.sub(r'<meta name="description" content="[^"]*">', "", source, count=1)
     if shares:
-        source = source.replace('<script src="v2.js" defer>', '<script src="content/share-links.js" defer></script><script src="v2.js" defer>', 1)
+        source = source.replace('<script src="scripts/v2.js" defer>', '<script src="content/share-links.js" defer></script><script src="scripts/v2.js" defer>', 1)
     cover = next((url for photo in photos if (url := share_image(base, photo))), None) if base else None
     metadata = page_metadata(title, description, urljoin(base, page) if base else None, cover)
     source = source.replace("</head>", f"{metadata}\n</head>", 1)
