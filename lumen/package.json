@@ -8,7 +8,8 @@
     "node": ">=20.19"
   },
   "scripts": {
-    "test": "node tests/flows.cjs && node tests/options.cjs"
+    "test": "node tests/flows.cjs && node tests/options.cjs",
+    "verify": "npm test && python -X utf8 -B -m unittest discover -s tests -p \"*_test.py\" && python -X utf8 -B tools/verify.py --site-url https://example.test/photos/ && python -X utf8 -B tools/release_check.py"
   },
   "devDependencies": {
     "happy-dom": "21.0.4"
